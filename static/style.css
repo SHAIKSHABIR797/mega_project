@@ -1,0 +1,169 @@
+/* Reset basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body layout with fade-in */
+body {
+    background: linear-gradient(to right, #667eea, #764ba2);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    padding: 20px;
+    animation: fadeIn 1s ease-in;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Dashboard container */
+.container {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+/* Headings */
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+/* Flash messages */
+ul {
+    list-style: none;
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-align: center;
+    animation: slideFade 0.5s ease-out;
+}
+
+/* Slide in animation for flash messages */
+@keyframes slideFade {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Flash message colors (based on inline styles) */
+li[style*="red"] {
+    background-color: rgba(255, 0, 0, 0.15);
+    color: #ff6b6b;
+}
+
+li[style*="blue"] {
+    background-color: rgba(0, 0, 255, 0.15);
+    color: #61a0ff;
+}
+
+li[style*="green"] {
+    background-color: rgba(0, 255, 0, 0.15);
+    color: #3ddc91;
+}
+
+/* Form styles */
+form {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Input fields */
+input[type="text"],
+input[type="password"] {
+    width: 90%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transition: 0.3s ease;
+}
+
+/* Input focus effect */
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border: 2px solid #00ffc3;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Buttons */
+button,
+.btn {
+    padding: 12px 24px;
+    background-color: #00c48c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Hover effects for buttons */
+button:hover,
+.btn:hover {
+    background-color: #00a774;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 196, 140, 0.6);
+}
+
+/* Paragraph & link */
+p {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+a {
+    color: #ffd966;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #fff;
+    text-shadow: 0 0 5px #ffd966;
+}
