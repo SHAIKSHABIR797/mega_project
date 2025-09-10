@@ -1,12 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+  <div class="container">
     <h2>Welcome, {{ username }} 🎉</h2>
-    <p>You are now logged in.</p>
-    <p><a href="{{ url_for('logout') }}">Logout</a></p>
+    <h3>Available Events</h3>
+
+    <ul>
+      {% for event_name in events %}
+        <li>
+          {{ event_name }} -
+          <a href="{{ url_for('register_event') }}?event={{ event_name }}" class="btn">Register</a>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <h3>Your Registered Events</h3>
+    {% if user_events %}
+      <ul>
+        {% for e in user_events %}
+          <li>
+            <strong>{{ e.event_name }}</strong> ({{ e.event_type }}) on {{ e.event_date }} at {{ e.event_time }} - <em>{{ e.registration_type }}</em>
+            <br>
+            <!-- Edit button -->
+            <a href="{{ url_for('register_event', event_id=e.id) }}" class="btn">Edit</a>
+            <!-- Delete button -->
+            <form action="{{ url_for('delete_event', event_id=e.id) }}" method="POST" style="display:inline;">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>You have not registered for any events yet.</p>
+    {% endif %}
+
+    <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for category, message in messages %}
+            <li style="color: {% if category == 'danger' %}red{% elif category == 'success' %}green{% else %}black{% endif %};">
+              {{ message }}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+  </div>
 </body>
 </html>

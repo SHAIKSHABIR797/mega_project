@@ -1,169 +1,279 @@
 /* Reset basic styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Body layout with fade-in */
+/* Body layout */
 body {
-    background: linear-gradient(to right, #667eea, #764ba2);
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
-    padding: 20px;
-    animation: fadeIn 1s ease-in;
+  background: linear-gradient(135deg, #4c6ef5, #d90429);
+  color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+  padding: 20px;
+  animation: fadeIn 1s ease-in forwards;
+  overflow-x: hidden;
 }
 
 /* Fade-in animation */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Dashboard container */
+/* Container */
 .container {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 40px;
-    border-radius: 12px;
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 48px 36px;
+  max-width: 1000px;
+  width: 95%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: slideUpFade 0.8s ease forwards;
+}
+
+/* Slide-up fade animation */
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Headings */
 h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    color: #ffffff;
+  font-size: 2.2rem;
+  margin-bottom: 24px;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+/* Events section side-by-side - improved */
+.events-section {
+  display: flex;
+  justify-content: space-evenly;  /* balanced spacing */
+  align-items: stretch;           /* equal height */
+  gap: 28px;
+  margin: 32px 0;
+  flex-wrap: wrap;
+}
+
+.event-list,
+.registered-events {
+  flex: 1;
+  min-width: 320px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-list:hover,
+.registered-events:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
 }
 
 /* Flash messages */
 ul {
-    list-style: none;
-    margin-bottom: 20px;
-    padding: 0;
+  list-style: none;
+  margin-bottom: 24px;
+  padding: 0;
 }
 
 li {
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    font-weight: 500;
-    text-align: center;
-    animation: slideFade 0.5s ease-out;
+  padding: 14px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-align: center;
+  font-size: 1rem;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+  animation: slideFade 0.6s ease forwards;
 }
 
-/* Slide in animation for flash messages */
+/* Slide fade */
 @keyframes slideFade {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Flash message colors (based on inline styles) */
+/* Flash message colors - more professional */
 li[style*="red"] {
-    background-color: rgba(255, 0, 0, 0.15);
-    color: #ff6b6b;
+  background-color: rgba(220, 53, 69, 0.15);
+  color: #dc3545;
+  box-shadow: 0 0 12px rgba(220, 53, 69, 0.5);
 }
 
 li[style*="blue"] {
-    background-color: rgba(0, 0, 255, 0.15);
-    color: #61a0ff;
+  background-color: rgba(13, 110, 253, 0.15);
+  color: #0d6efd;
+  box-shadow: 0 0 12px rgba(13, 110, 253, 0.5);
 }
 
 li[style*="green"] {
-    background-color: rgba(0, 255, 0, 0.15);
-    color: #3ddc91;
-}
-
-/* Form styles */
-form {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 30px;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-}
-
-/* Input fields */
-input[type="text"],
-input[type="password"] {
-    width: 90%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    transition: 0.3s ease;
-}
-
-/* Input focus effect */
-input[type="text"]:focus,
-input[type="password"]:focus {
-    outline: none;
-    border: 2px solid #00ffc3;
-    background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(25, 135, 84, 0.15);
+  color: #198754;   /* Bootstrap green */
+  box-shadow: 0 0 12px rgba(25, 135, 84, 0.5);
 }
 
 /* Buttons */
 button,
 .btn {
-    padding: 12px 24px;
-    background-color: #00c48c;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    font-weight: bold;
-    text-decoration: none;
-    display: inline-block;
+  padding: 14px 34px;
+  background-color: #00ffcc;
+  color: #1b1b1b;
+  border: none;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 18px rgba(0, 255, 204, 0.6);
+  text-decoration: none;
+  display: inline-block;
+  user-select: none;
+  margin-top: 24px;
 }
 
-/* Hover effects for buttons */
 button:hover,
 .btn:hover {
-    background-color: #00a774;
-    transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(0, 196, 140, 0.6);
+  background-color: #00e6b8;
+  transform: scale(1.1);
+  box-shadow: 0 10px 24px rgba(0, 230, 184, 0.9);
+}
+
+button:active,
+.btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 6px 15px rgba(0, 200, 140, 0.8);
 }
 
 /* Paragraph & link */
 p {
-    margin-top: 20px;
-    font-size: 14px;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #ddd;
 }
 
 a {
-    color: #ffd966;
-    text-decoration: none;
-    transition: 0.3s ease;
+  color: #ffeb3b;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 a:hover {
-    text-decoration: underline;
-    color: #fff;
-    text-shadow: 0 0 5px #ffd966;
+  text-decoration: underline;
+  color: #fff176;
+  text-shadow: 0 0 12px #ffeb3bcc;
+}
+
+/* Scroll fade animation */
+.fade-slide {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-slide.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .events-section {
+    flex-direction: column;
+  }
+
+  .event-list,
+  .registered-events {
+    width: 100%;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  button,
+  .btn {
+    width: 100%;
+    padding: 14px;
+  }
+}
+
+/* Style for Edit and Delete buttons inside event lists */
+ul li form,
+ul li a.btn {
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: 8px;
+}
+
+ul li form button,
+ul li a.btn {
+  padding: 8px 18px;
+  font-size: 14px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 255, 204, 0.5);
+}
+
+ul li form button.btn-danger {
+  background-color: #ff4c4c;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(255, 76, 76, 0.6);
+}
+
+ul li form button.btn-danger:hover {
+  background-color: #e63c3c;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(230, 60, 60, 0.7);
+}
+
+ul li a.btn:hover {
+  transform: scale(1.05);
+}
+
+/* Make buttons align nicely in smaller screens */
+@media (max-width: 768px) {
+  ul li form,
+  ul li a.btn {
+    margin-left: 0;
+    margin-top: 6px;
+  }
 }

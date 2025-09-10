@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% if event %}Edit Event{% else %}Register Event{% endif %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>
+      {% if event %}
+        Edit Event - {{ event.event_name }}
+      {% else %}
+        Register Event - {{ event_name }}
+      {% endif %}
+    </h2>
+
+    <!-- Corrected form action -->
+    <form method="POST" action="{{ url_for('register_event', event_id=event.id if event else '', event=event_name) }}">
+      <label>Event Type:</label>
+      <input type="text" name="event_type"
+             value="{% if event %}{{ event.event_type }}{% endif %}" required>
+
+      <label>Date:</label>
+      <input type="date" name="event_date"
+             value="{% if event %}{{ event.event_date }}{% endif %}" required>
+
+      <label>Time:</label>
+      <input type="time" name="event_time"
+             value="{% if event %}{{ event.event_time }}{% endif %}" required>
+
+      <label>Registration Type:</label>
+      <select name="registration_type">
+        <option value="Individual"
+          {% if event and event.registration_type == "Individual" %}selected{% endif %}>
+          Individual
+        </option>
+        <option value="Team"
+          {% if event and event.registration_type == "Team" %}selected{% endif %}>
+          Team
+        </option>
+      </select>
+
+      <button type="submit" class="btn">
+        {% if event %}Update Event{% else %}Register Event{% endif %}
+      </button>
+    </form>
+
+    <a href="{{ url_for('dashboard') }}" class="btn">Back</a>
+  </div>
+</body>
+</html>
